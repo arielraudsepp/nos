@@ -1,6 +1,54 @@
+// Remove if not using parcel
 if (module.hot) {
   module.hot.accept()
 }
+
+//logic portion for allocating bedroom size based on family composistion
+var adult_bedrooms = (adults,spouse,children) => {
+    let bedrooms = adults;
+    if (spouse) {
+        bedrooms -= 1;
+    }
+    if ((children === false) && (adults === 1)){
+        bedrooms -= 1;
+    }
+return bedrooms
+}
+
+var children_bedrooms = (f_5_to_17, f_under_5, m_5_to_17, m_under_5) => {
+    let bedrooms = 0;
+    let females = f_5_to_17 + f_under_5;
+    let males = m_5_to_17 + m_under_5;
+    let remainder_under_5 = 0;
+
+    if (females % 2 === 0) {
+        bedrooms += (females / 2);
+    } else if  (f_5_to_17 % 2 === 1) {
+        bedrooms += (((females - 1) / 2) + 1);
+    } else {
+        bedrooms += ((females - 1) / 2);
+        remainder_under_5 += 1;
+    }
+
+    if (males % 2 === 0) {
+        bedrooms += (males / 2);
+    } else if (m_5_to_17 % 2 === 1) {
+        bedrooms += (((males - 1) / 2) + 1);
+    } else {
+        bedrooms += ((males - 1) / 2);
+        remainder_under_5 += 1;
+    }
+
+    if (remainder_under_5 % 2 === 0) {
+        bedrooms += (remainder_under_5 / 2)
+    } else {
+        bedrooms += (((remainder_under_5 - 1) / 2) + 1);
+    }
+
+return bedrooms
+}
+
+
 let formData = {};
 
 let init = () => {
@@ -25,18 +73,19 @@ let hideChildren = () => {
 
 let convertToNumber = (value) => {
   let result = parseInt(value, 10);
-  if (result !== NaN) {
+  if (!isNaN(result)) {
+    console.log(result);
     return parseInt(value, 10);
   } else {
     console.error(`Can not convert ${value} into a number`);
+    return 0;
   }
 };
 
 function showCalculation(event) {
   event.preventDefault();
 
-  //debugger;
-  let formData = {
+  const formData = {
     adults: convertToNumber(event.target[0].value),
     spouse: event.target[1].checked,
     children: event.target[3].checked,
@@ -47,8 +96,9 @@ function showCalculation(event) {
   };
 
   let output = document.getElementById("output");
+  let total_bedrooms = adult_bedrooms(formData.adults,formData.spouse,formData.children) + children_bedrooms(formData.f_5_to_17, formData.f_under_5, formData.m_5_to_17, formData.m_under_5)
 
-  output.innerHTML = JSON.stringify(formData, null, "\t");
+  output.innerHTML = total_bedrooms
 }
 
 

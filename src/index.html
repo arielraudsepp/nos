@@ -18,10 +18,10 @@
             <form class="ui form" id="rooms">
                 <h1 class="ui center aligned header">Number of Bedrooms Calculator</h1>
                 <div class="field">
-                    <label for="adults">How many adults are in your household (including yourself)?</label>
+                    <label for="adults">How many members of your household are over 18 years of age(including yourself)?</label>
                     <input id="adults" type="number"/>
                 </div>
-                <div class="inline field segment">
+                <div class="inline field">
                     <label>Do you live with a spouse or inter-dependent partner?</label>
                     <div class="ui toggle checkbox">
                         <label for="spouse">Yes</label>
@@ -37,25 +37,26 @@
                 </div>
                 <div id="container" style="display: none;">
                     <div class="field">
-                        <label for="f_5_to_17">How many female children ages 5-17?</label>
-                        <input id="f_5_to_17" type="number"/>
-                    </div>
-                    <div class="field">
                         <label for="f_under_5">How many female children under the age of 5?</label>
                         <input id="f_under_5" type="number"/>
                     </div>
                     <div class="field">
-                        <label for="m_5_to_17">How many male children ages 5-17?</label>
-                        <input id="m_5_to_17" type="number"/>
+                        <label for="f_5_to_17">How many female children ages 5-17?</label>
+                        <input id="f_5_to_17" type="number"/>
                     </div>
                     <div class="field">
                         <label for="m_under_5">How many male children under the age of 5?</label>
                         <input id="m_under_5" type="number"/>
                     </div>
+                    <div class="field">
+                        <label for="m_5_to_17">How many male children ages 5-17?</label>
+                        <input id="m_5_to_17" type="number"/>
+                    </div>
+
                 </div>
                 <button class="ui button" type="submit" id="calculate" style="margin-top: 10px">Calculate</button>
             </form>
-                <h3 id="output" style="margin-top: 10px"></h3>
+            <h3 id="output" style="margin-top: 10px"></h3>
         </div>
 
         <script src="js/main.js"></script>

@@ -15,7 +15,7 @@ var adult_bedrooms = (adults,spouse,children) => {
   return bedrooms
 }
 
-var children_bedrooms = (f_5_to_17, f_under_5, m_5_to_17, m_under_5) => {
+var children_bedrooms = (f_under_5, f_5_to_17, m_under_5, m_5_to_17) => {
   let bedrooms = 0;
   let females = f_5_to_17 + f_under_5;
   let males = m_5_to_17 + m_under_5;
@@ -98,7 +98,7 @@ function showCalculation(event) {
   };
 
   let output = document.getElementById("output");
-  let total_bedrooms = adult_bedrooms(formData.adults,formData.spouse,formData.children) + children_bedrooms(formData.f_5_to_17, formData.f_under_5, formData.m_5_to_17, formData.m_under_5);
+  let total_bedrooms = adult_bedrooms(formData.adults,formData.spouse,formData.children) + children_bedrooms(formData.f_under_5, formData.f_5_to_17, formData.m_under_5, formData.m_5_to_17);
 
     if (total_bedrooms < 1) {
       output.innerHTML = 'You qualify for a bachelor or a 1 bedroom home.'

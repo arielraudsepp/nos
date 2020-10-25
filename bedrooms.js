@@ -32,7 +32,7 @@ return bedrooms
 // calculation for how many bedrooms for children
 // one bedroom for each pair of children under age 18 who are same gender and
 // one bedroom for each pair of children under the age of 5 who are different genders
-var children_bedrooms = (f_5_to_17, f_under_5, m_5_to_17, m_under_5) => {
+var children_bedrooms = (f_under_5, f_5_to_17, m_under_5, m_5_to_17) => {
     let bedrooms = 0;
     let females = f_5_to_17 + f_under_5;
     let males = m_5_to_17 + m_under_5;
@@ -79,9 +79,9 @@ return bedrooms
 // assert.equal(children_bedrooms(0,1,0,0), 1);
 // assert.equal(children_bedrooms(0,1,1,0), 2);
 // assert.equal(children_bedrooms(1,1,1,0), 2);
-// assert.equal(children_bedrooms(0,1,0,1), 1);
+assert.equal(children_bedrooms(0,1,0,1), 2);
 
-// assert.equal(children_bedrooms(1,0,1,0), 2);
+assert.equal(children_bedrooms(1,0,1,0), 1);
 // assert.equal(children_bedrooms(1,0,0,1), 2);
 // assert.equal(children_bedrooms(1,0,1,1), 2);
 // assert.equal(children_bedrooms(0,0,0,1), 1);

@@ -91,10 +91,10 @@ function showCalculation(event) {
     adults: convertToNumber(event.target[0].value),
     spouse: event.target[1].checked,
     children: event.target[2].checked,
-    f_5_to_17: convertToNumber(event.target[3].value),
-    f_under_5: convertToNumber(event.target[4].value),
-    m_5_to_17: convertToNumber(event.target[5].value),
-    m_under_5: convertToNumber(event.target[6].value)
+    f_under_5: convertToNumber(event.target[3].value),
+    f_5_to_17: convertToNumber(event.target[4].value),
+    m_under_5: convertToNumber(event.target[5].value),
+    m_5_to_17: convertToNumber(event.target[6].value)
   };
 
   let output = document.getElementById("output");

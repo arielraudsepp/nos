@@ -102,6 +102,8 @@ function showCalculation(event) {
 
     if (total_bedrooms < 1) {
       output.innerHTML = 'You qualify for a bachelor or a 1 bedroom home.'
+    } else if (total_bedrooms > 5) {
+      output.innerHTML = `You qualify for a ${total_bedrooms} bedroom home. We not have housing that can accomodate your household's needs.`
     } else {
       output.innerHTML = `You qualify for a ${total_bedrooms} bedroom home.`
     }
